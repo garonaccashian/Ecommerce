@@ -52,9 +52,11 @@
                         <div class="navbar-nav ml-auto py-0">
                              @if (Route::has('login'))
                              @auth
-                             <x-app-layout>
-    
-                            </x-app-layout>
+                            <span class="nav-item nav-link">{{ Auth::user()->name }}</span>
+                                <form method="POST" action="{{ route('logout') }}">
+                                 @csrf
+                                <button type="submit" class="btn btn-link nav-item nav-link">Logout</button>
+                                </form>
                              @else
                             <a href="{{ route('login') }}" class="nav-item nav-link">Login</a>
                             <a href="{{ route('register') }}" class="nav-item nav-link">Register</a>
